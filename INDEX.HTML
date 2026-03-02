@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nabin Tiwari | Cybersecurity Enthusiast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        h1 {
+            font-size: 40px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        h2 {
+            color: white;
+            margin-top: -10px;
+        }
+
+        p {
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #00ff00;
+            color: black;
+            box-shadow: 0 0 15px #00ff00;
+        }
+
+        footer {
+            margin-top: 80px;
+            font-size: 14px;
+            color: gray;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+    <h1>Hi, I'm Nabin Tiwari</h1>
+    <h2>Cybersecurity Enthusiast | Ethical Hacker</h2>
+
+    <p>
+        I am a Grade 11 student at Lumbini Academic College (LAC).
+        Passionate about cybersecurity, ethical hacking, and technology.
+        I love learning how systems work and how to secure them.
+    </p>
+
+    <a href="#" class="btn">Contact Me</a>
+
+    <footer>
+        © 2026 Nabin Tiwari | Built with LOVE & Hacker Mindset
+    </footer>
+</div>
+
+<script>
+    var canvas = document.getElementById("matrix");
+    var ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
+    letters = letters.split("");
+
+    var fontSize = 14;
+    var columns = canvas.width / fontSize;
+    var drops = [];
+
+    for (var x = 0; x < columns; x++)
+        drops[x] = 1;
+
+    function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#0F0";
+        ctx.font = fontSize + "px monospace";
+
+        for (var i = 0; i < drops.length; i++) {
+            var text = letters[Math.floor(Math.random() * letters.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+                drops[i] = 0;
+
+            drops[i]++;
+        }
+    }
+
+    setInterval(draw, 33);
+</script>
+
+</body>
+</html>
